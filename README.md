@@ -22,8 +22,6 @@ Mencari standar deviasi dari selisih data
 sd(x-y)
 ```
 
-Hasil:
-
 ![image](https://user-images.githubusercontent.com/72655591/170877481-ab1ee8ba-2026-4918-8461-7eba4cebf861.png)
 
 ### 1.b
@@ -33,7 +31,6 @@ Mencari p-value
 ```bash
 t.test(y, x, paired = TRUE)
 ```
-Hasil:
 
 ![image](https://user-images.githubusercontent.com/72655591/170877544-3e9f008f-870b-4220-ab71-aa493fb70c0e.png)
 
@@ -44,7 +41,6 @@ H0 : “tidak ada pengaruh yang signifikan secara statistika dalam hal kadar sat
 ```
 
 Karena p-value < 𝛼 maka H0 ditolak, maka kesimpulannya `terdapat pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen, sebelum dan sesudah melakukan aktivitas A`
-
 
 ## Nomer 2
 ### 2.a
@@ -59,8 +55,6 @@ zsum.test(mean.x = 23500, sigma.x=3900, n.x = 100, mu = 20000, alternative = "gr
 ```
 
 Dapat dilihat dari output nilai Z adalah `8.9744`, p-value yang hampir bernilai nol, dan selang kepercayaan berada pada batas bawah `22858.51`
-
-Hasil:
 
 ![image](https://user-images.githubusercontent.com/72655591/170878512-71ca9957-8280-42f5-bab3-c5b3792ad724.png)
 
@@ -120,8 +114,71 @@ t_value = (bandung_mean-bali_mean)/(s*sqrt((1/bandung_n)+(1/bali_n)))
 
 ### 3.e
 
-Keputusan yang dilakukan ialah menolak H0 jika t_value > batas atau t_value < -batas
+Keputusan yang dilakukan ialah menolak H0 jika `t_value > batas` atau `t_value < -batas`
 
 ### 3.f
 
 Karena nilai t_value berada diantara batas maka H0 diterima, maka kesimpulannya `Rata - rata saham di kota Bandung sama dengan rata rata saham di kota Bali`
+
+## Nomer 4
+### 4.a
+
+Data dipisah berdasarkan grup no 1, grup no 2, grup no 3, untuk dilihat persebaran datanya
+
+```bash
+dataSet  <- read.table(url("https://rstatisticsandresearch.weebly.com/uploads/1/0/2/6/1026585/onewayanova.txt"), header = TRUE, check.names = TRUE) 
+
+group <- split(dataSet, dataSet$Group)
+group1 <- group$`1`
+group2 <- group$`2`
+group3 <- group$`3`
+
+qqnorm(group1$Length,main = "Grup1")
+qqline(group1$Length)
+
+qqnorm(group2$Length,main = "Grup2")
+qqline(group2$Length)
+
+qqnorm(group3$Length,main = "Grup3")
+qqline(group3$Length)
+```
+
+![image](https://user-images.githubusercontent.com/72655591/170881382-5f082292-4258-4599-b0b1-dc0ec7825e00.png)
+
+![image](https://user-images.githubusercontent.com/72655591/170881400-bf6da550-8731-4390-84e8-17eb45982b13.png)
+
+![image](https://user-images.githubusercontent.com/72655591/170881426-9d21d3e4-31ea-43da-a665-218372857d69.png)
+
+### 4.b
+
+Menggunakan bartlett test didapat p-value 0.8054, nilai bartlett sebesar 0.43292 dan df bernilai 2
+
+```bash
+bartlett.test(dataSet$Length, dataSet$Group)
+```
+
+![image](https://user-images.githubusercontent.com/72655591/170881788-b4b0c99a-2c05-41e7-8202-3b73f15877f4.png)
+
+### 4.c
+
+Membuat model linear
+
+```bash
+model1 <- lm(dataSet$Length~dataSet$Group)
+```
+
+![image](https://user-images.githubusercontent.com/72655591/170881925-aac70d49-d858-4539-b3fc-7f35fc482564.png)
+
+### 4.d
+
+Didapatkan nilai P dari 4c yaitu `0.6401` dengan kesimpulan H0 diterima
+
+### 4.e
+
+```bash
+TukeyHSD(aov(Length ~ factor(Group), dataSet))
+```
+
+![image](https://user-images.githubusercontent.com/72655591/170882065-6d5f86bb-5851-4b16-8473-a571faeae535.png)
+
+### 4.f
