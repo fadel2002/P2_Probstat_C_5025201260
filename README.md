@@ -65,6 +65,10 @@ Hasil:
 ![image](https://user-images.githubusercontent.com/72655591/170878512-71ca9957-8280-42f5-bab3-c5b3792ad724.png)
 
 ### 2.c
+
+```bash
 H0 : μ <= 20000
 H1 : μ > 20000
+```
+
 Dari p-value yang didapat `p-value ~ 0` maka H0 ditolak dan H1 diterima, maka kesimpulannya `mobil dikemudikan rata rata lebih dari 20.000 km per-tahun`
