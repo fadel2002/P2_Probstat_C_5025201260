@@ -43,7 +43,7 @@ Hasil:
 H0 : “tidak ada pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen, sebelum dan sesudah melakukan aktivitas A”
 ```
 
-Karena p-value < 𝛼 maka H0 ditolak, maka kesimpulannya `terdapat pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen, sebelum dan sesudah melakukan aktivitas A1`
+Karena p-value < 𝛼 maka H0 ditolak, maka kesimpulannya `terdapat pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen, sebelum dan sesudah melakukan aktivitas A`
 
 
 ## Nomer 2
