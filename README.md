@@ -148,3 +148,37 @@ qqline(group3$Length)
 ![image](https://user-images.githubusercontent.com/72655591/170881400-bf6da550-8731-4390-84e8-17eb45982b13.png)
 
 ![image](https://user-images.githubusercontent.com/72655591/170881426-9d21d3e4-31ea-43da-a665-218372857d69.png)
+
+### 4.b
+
+Menggunakan bartlett test didapat p-value 0.8054, nilai bartlett sebesar 0.43292 dan df bernilai 2
+
+```bash
+bartlett.test(dataSet$Length, dataSet$Group)
+```
+
+![image](https://user-images.githubusercontent.com/72655591/170881788-b4b0c99a-2c05-41e7-8202-3b73f15877f4.png)
+
+### 4.c
+
+Membuat model linear
+
+```bash
+model1 <- lm(dataSet$Length~dataSet$Group)
+```
+
+![image](https://user-images.githubusercontent.com/72655591/170881925-aac70d49-d858-4539-b3fc-7f35fc482564.png)
+
+### 4.d
+
+Didapatkan nilai P dari 4c yaitu `0.6401` dengan kesimpulan H0 diterima
+
+### 4.e
+
+```bash
+TukeyHSD(aov(Length ~ factor(Group), dataSet))
+```
+
+![image](https://user-images.githubusercontent.com/72655591/170882065-6d5f86bb-5851-4b16-8473-a571faeae535.png)
+
+### 4.f
