@@ -43,7 +43,7 @@ Hasil:
 H0 : “tidak ada pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen, sebelum dan sesudah melakukan aktivitas A”
 ```
 
-Karena p-value < 𝛼 maka H0 ditolak, maka kesimpulannya "terdapat pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen, sebelum dan sesudah melakukan aktivitas A"
+Karena p-value < 𝛼 maka H0 ditolak, maka kesimpulannya `terdapat pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen, sebelum dan sesudah melakukan aktivitas A1`
 
 
 ## Nomer 2
@@ -72,3 +72,56 @@ H1 : μ > 20000
 ```
 
 Dari p-value yang didapat `p-value ~ 0` maka H0 ditolak dan H1 diterima, maka kesimpulannya `mobil dikemudikan rata rata lebih dari 20.000 km per-tahun`
+
+## Nomer 3
+### 3.a
+
+Pembuatan hipotesis nol dan alternatif:
+
+```bash
+H0 = "Rata - rata saham di kota Bandung sama dengan rata rata saham di kota Bali"
+H1 = "Rata - rata saham di kota Bandung tidak sama dengan rata rata saham di kota Bali"
+```
+
+### 3.b
+
+Digunakan alternative `two.side` dikarenakan ingin menguji rata rata saham antar kedua kota tidak sama 
+
+```bash
+bandung_mean = 3.64
+bandung_sd = 1.67
+bandung_n = 19
+bali_mean = 2.79
+bali_sd = 1.32
+bali_n = 27
+tsum.test(mean.x = bandung_mean, s.x = bandung_sd, n.x = bandung_n, mean.y = bali_mean, s.y = bali_sd, n.y = bali_n, alternative = "two.side", var.equal = TRUE)
+```
+
+![image](https://user-images.githubusercontent.com/72655591/170878867-f20dfda0-7f17-4e68-a9e8-d28e3b0b4d95.png)
+
+### 3.c
+
+Perhitungan batas nilai kritikal
+
+```bash
+batas = qt(p = 0.025, df = 2, lower.tail = FALSE)
+```
+
+### 3.d
+
+Mencari nilai kritikal menggunakan rumus yang tertera dibawah ini
+
+![image](https://user-images.githubusercontent.com/72655591/170879110-0d771d60-a351-4793-bfc7-a392254a3473.png)
+
+```bash
+s = sqrt(((bandung_n-1)*bandung_sd^2+(bali_n-1)*bali_sd^2)/2)
+t_value = (bandung_mean-bali_mean)/(s*sqrt((1/bandung_n)+(1/bali_n)))
+```
+
+### 3.e
+
+Keputusan yang dilakukan ialah menolak H0 jika t_value > batas atau t_value < -batas
+
+### 3.f
+
+Karena nilai t_value berada diantara batas maka H0 diterima, maka kesimpulannya `Rata - rata saham di kota Bandung sama dengan rata rata saham di kota Bali`
