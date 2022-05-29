@@ -58,3 +58,35 @@ t_value = (bandung_mean-bali_mean)/(s*sqrt((1/bandung_n)+(1/bali_n)))
 #f
 #Karena nilai t_value berada diantara batas maka H0 diterima
 #Maka "Rata - rata saham di kota Bandung sama dengan rata rata saham di kota Bali"
+
+#4
+#a
+dataSet  <- read.table(url("https://rstatisticsandresearch.weebly.com/uploads/1/0/2/6/1026585/onewayanova.txt"), header = TRUE, check.names = TRUE) 
+
+group <- split(dataSet, dataSet$Group)
+group1 <- group$`1`
+group2 <- group$`2`
+group3 <- group$`3`
+
+qqnorm(group1$Length,main = "Group1")
+qqline(group1$Length)
+
+qqnorm(group2$Length,main = "Group2")
+qqline(group2$Length)
+
+qqnorm(group3$Length,main = "Group3")
+qqline(group3$Length)
+
+#b
+bartlett.test(dataSet$Length, dataSet$Group)
+
+#c
+model1 <- lm(dataSet$Length~dataSet$Group)
+summary(model1)
+
+#d
+
+#e
+TukeyHSD(aov(Length ~ factor(Group), dataSet))
+
+#f
